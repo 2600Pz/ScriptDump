@@ -4,4 +4,4 @@ New-PSDrive -name "home" -PSProvider FileSystem -Root "\\fs04\homes$\watsoj340" 
 
 Set-Location home:\usmt | Out-Null
 
-.\loadstate.exe '\\fs04\homes$\watsoj340\'$user /i:MigDocs.xml /i:MigUser.xml /c
+.\loadstate.exe \\fs04\homes$\watsoj340\$user /i:MigDocs.xml /i:MigUser.xml /c
