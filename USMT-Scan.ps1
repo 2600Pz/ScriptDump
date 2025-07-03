@@ -33,7 +33,7 @@ Set-Location home:\usmt | Out-Null
 $user1 = $usernamesToSave[0]
 
 if (Test-Path -path \\fs04\homes$\watsoj340\$user1) {
-    $choice = Read-Host -Prompt "The folder $user1 already exists. Do you want to overwrite it? (Y/N)" -foregroundcolor Yellow
+    $choice = Read-Host -Prompt "The folder $user1 already exists. Do you want to overwrite it? (Y/N)"
     if ($choice -eq 'Y' -or $choice -eq 'y') {
         try {
             .\scanstate.exe \\fs04\homes$\watsoj340\$user1 /i:MigDocs.xml /i:MigUser.xml /ue:*\* $uiArgs /o /c
@@ -44,8 +44,8 @@ if (Test-Path -path \\fs04\homes$\watsoj340\$user1) {
         }
     } else {
         Write-Host "Operation cancelled by user." -ForegroundColor Yellow
-        return $false
-    }
+        return $false | Out-Null
+    } 
 } else {
     try {
         .\scanstate.exe \\fs04\homes$\watsoj340\$user1 /i:MigDocs.xml /i:MigUser.xml /ue:*\* $uiArgs /c
