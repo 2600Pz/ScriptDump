@@ -57,7 +57,7 @@ if (!(test-path -path home:\usmt)) {
     Write-Host "Creating new PSDrive with the name 'home'..."
     try {
         New-PSDrive -name "home" -PSProvider FileSystem -Root '\\fs04\homes$\WatsoJ340' -ErrorAction Stop | Out-null
-        Write-Host "PSDrive created succesfully" -ForegroundColor Green
+        Write-Host "PSDrive created succesfully"
     } catch {
         Write-Host "Failed to create PSDrive: $($_.Exception.Message)" -ForegroundColor Red
     }
@@ -68,7 +68,7 @@ Set-Location home:\usmt -ErrorAction stop | Out-Null
 $firstUser = $usernamesToSave[0]
 $destinationPath = "\\fs04\homes$\watsoj340\$firstUser"
 
-Write-host "Migration store path: $destinationPath"
+Write-host "Migration store path: $destinationPath" -ForegroundColor Green
 
 if (Test-Path -path \\fs04\homes$\watsoj340\$firstUser) {
     Write-Host -NoNewline "The migration store for "
