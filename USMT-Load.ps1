@@ -1,3 +1,5 @@
+Clear-Host
+
 if (!(Test-Path "home:\usmt")) {
     try {
         New-PSDrive -name "home" -PSProvider FileSystem -Root "\\fs04\homes$\watsoj340" | Out-Null
