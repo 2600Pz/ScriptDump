@@ -1,5 +1,9 @@
 if (!(Test-Path "home:\usmt")) {
-    New-PSDrive -name "home" -PSProvider FileSystem -Root "\\fs04\homes$\watsoj340" | Out-Null
+    try {
+        New-PSDrive -name "home" -PSProvider FileSystem -Root "\\fs04\homes$\watsoj340" | Out-Null
+    } catch {
+        Write-Host "Failed to create PSDrive: $($_.Exception.Message)" -ForegroundColor Red
+    }
 }
 Set-Location home:\usmt | Out-Null
 
