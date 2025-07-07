@@ -5,7 +5,12 @@ $usernamesToSave = @()
 while ($true) {
     $username = Read-Host "Enter a username to save (or press Enter to finish)"
     if ([string]::IsNullOrWhiteSpace($username)) {
-        break
+        if (!$usernamesToSave) {
+            Write-Host "No usernames entered. Exiting script." -ForegroundColor Red
+            exit
+        } else {
+            break
+        }
     }
     $username = $username.Trim()
     if (!(test-path -path C:\Users\$username)) {
@@ -19,10 +24,6 @@ while ($true) {
     $usernamesToSave += $username   
 }
 
-if ($usernamesToSave -eq 0) {
-    Write-Host "No usernames were entered. Exiting script" -ForegroundColor Red
-    exit
-}
 
 Clear-Host
 
