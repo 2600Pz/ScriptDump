@@ -68,7 +68,8 @@ Set-Location home:\usmt -ErrorAction stop | Out-Null
 $firstUser = $usernamesToSave[0]
 $destinationPath = "\\fs04\homes$\watsoj340\$firstUser"
 
-Write-host "Migration store path: $destinationPath" -ForegroundColor Green
+Write-Host -NoNewLine "Migration store path: "
+Write-Host $destinationPath -ForegroundColor Green
 
 if (Test-Path -path \\fs04\homes$\watsoj340\$firstUser) {
     Write-Host -NoNewline "The migration store for "
